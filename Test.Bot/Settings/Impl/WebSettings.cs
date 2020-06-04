@@ -45,6 +45,5 @@ namespace Test.Bot.Settings.Impl
 		[JsonProperty("crxPath")]
 		public string CrxPath { get; set; }
 
-
 	}
 }

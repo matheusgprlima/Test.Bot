@@ -1,9 +1,6 @@
 ﻿using System;
 namespace Test.Bot.Exceptions
 {
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <seealso cref="System.ApplicationException" />
 	[Serializable]
 	public class BotException : ApplicationException

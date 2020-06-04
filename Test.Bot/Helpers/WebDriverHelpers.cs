@@ -5,9 +5,6 @@ using EnumTypeBy = IA.Framework.Selenium.Enum.EnumTypeBy;
 
 namespace Test.Bot.Helpers
 {
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <seealso cref="System.IDisposable" />
 	public abstract class WebDriverHelpers : IDisposable
 	{
@@ -26,7 +23,6 @@ namespace Test.Bot.Helpers
 			_webDriver = seleniumHelperFactory.CreateChrome(10, null, null, webSettings.CrxPath, null);
 
 		}
-
 		/// <summary>
 		/// Goes to URL.
 		/// </summary>
@@ -36,7 +32,6 @@ namespace Test.Bot.Helpers
 
 			_webDriver.NavigateUrl(url);
 		}
-
 		/// <summary>
 		/// Clicks the specified identifier.
 		/// </summary>
@@ -46,8 +41,6 @@ namespace Test.Bot.Helpers
 		{
 			_webDriver.ClickItem(id, enumType);
 		}
-
-
 		/// <summary>
 		/// Clicks the and wait.
 		/// </summary>
@@ -58,6 +51,9 @@ namespace Test.Bot.Helpers
 			_webDriver.ElementExistClickable(id, enumType, 10);
 		}
 
+		/// <summary>
+		/// Switches the parent frame.
+		/// </summary>
 		protected void SwitchParentFrame()
 		{
 			_webDriver.SwitchToParentFrame();
@@ -73,7 +69,6 @@ namespace Test.Bot.Helpers
 			_webDriver.ClearText(id, EnumTypeBy.ById);
 			_webDriver.WriteText(id, valor, EnumTypeBy.ById);
 		}
-
 		/// <summary>
 		/// Switches to frame.
 		/// </summary>
@@ -83,13 +78,25 @@ namespace Test.Bot.Helpers
 		{
 			_webDriver.SwitchToFrame(id, enumTypeBy);
 		}
-
 		/// <summary>
 		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 		/// </summary>
 		public void Dispose()
 		{
-			_webDriver.Dispose();
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		/// <summary>
+		/// Releases unmanaged and - optionally - managed resources.
+		/// </summary>
+		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				_webDriver.Dispose();
+			}
 		}
 	}
 

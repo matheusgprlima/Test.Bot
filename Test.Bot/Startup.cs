@@ -27,7 +27,6 @@ namespace Test.Bot
 		{
 			_configuration = LoadConfiguration();
 		}
-
 		/// <summary>
 		/// Configures the services.
 		/// </summary>
@@ -43,8 +42,6 @@ namespace Test.Bot
 
 			return services.AddOptions().BuildServiceProvider();
 		}
-
-
 		/// <summary>
 		/// Loads the configuration.
 		/// </summary>

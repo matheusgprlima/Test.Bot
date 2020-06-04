@@ -1,8 +1,5 @@
 ﻿namespace Test.Bot.Settings.Contracts
 {
-	/// <summary>
-	/// 
-	/// </summary>
 	public interface IWebSettings
 	{
 		/// <summary>

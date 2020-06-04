@@ -9,7 +9,6 @@ using Test.Bot.Settings.Contracts;
 
 namespace Test.Bot.Service.Impl
 {
-
 	/// <seealso cref="Test.Bot.Helpers.WebDriverHelpers" />
 	/// <seealso cref="Test.Bot.Service.Contracts.IBotService" />
 	public class BotService : WebDriverHelpers, IBotService
@@ -38,7 +37,7 @@ namespace Test.Bot.Service.Impl
 		/// </summary>
 		/// <param name="webDriverSettings">The web driver settings.</param>
 		/// <param name="seleniumHelperFactory">The selenium helper factory.</param>
-		public BotService(IWebSettings webDriverSettings, ISeleniumHelperFactory seleniumHelperFactory) : base(webDriverSettings,  seleniumHelperFactory)
+		public BotService(IWebSettings webDriverSettings, ISeleniumHelperFactory seleniumHelperFactory) : base(webDriverSettings, seleniumHelperFactory)
 		{
 			_webDriverSettings = webDriverSettings;
 
@@ -79,6 +78,8 @@ namespace Test.Bot.Service.Impl
 				Click(
 					id: _methodsInputs["Download_Xml"],
 					enumType: EnumTypeBy.ById);
+				
+				Dispose();
 			}
 
 			catch (BotException ex)
