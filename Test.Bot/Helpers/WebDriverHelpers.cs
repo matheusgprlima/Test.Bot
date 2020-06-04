@@ -24,9 +24,6 @@ namespace Test.Bot.Helpers
 		protected WebDriverHelpers(IWebSettings webSettings, ISeleniumHelperFactory seleniumHelperFactory)
 		{
 			_webDriver = seleniumHelperFactory.CreateChrome(10, null, null, webSettings.CrxPath, null);
-			//ChromeOptions options = new ChromeOptions();
-			//options.AddExtensions(webDriverSettings.CrxPath);
-			//_webDriver = new ChromeDriver(webDriverSettings.WebDrivers, options);
 
 		}
 

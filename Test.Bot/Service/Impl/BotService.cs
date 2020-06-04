@@ -1,7 +1,6 @@
 ﻿using IA.Framework.Selenium.Enum;
 using IA.Framework.Selenium.Interfaces;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using Test.Bot.Exceptions;
 using Test.Bot.Helpers;
 using Test.Bot.Service.Contracts;
@@ -54,6 +53,7 @@ namespace Test.Bot.Service.Impl
 
 			try
 			{
+				//Devido ao problema de duas instâncias do chrome, fechar a segunda para que o bot não se perca ao realizar o processo.
 
 				//Navega para o site desejado.
 				GoToUrl(_webDriverSettings.FsistUrl);
@@ -73,20 +73,10 @@ namespace Test.Bot.Service.Impl
 					id: _methodsInputs["Botão_Consulta_Id"],
 					enumType: EnumTypeBy.ById);
 
-				//Muda para o Iframe do Recaptcha.
-				SwitchToFrame(
-					id: _methodsInputs["Recaptcha_Iframe"], 
-					enumTypeBy: EnumTypeBy.ById);
-				//Passa pelo recaptcha.
-				Click(
-					id: _methodsInputs["Recaptcha"],
-					enumType: EnumTypeBy.ByClassName);
-
-				//Volta para o parent Frame.
-				SwitchParentFrame();
+				//Processo de recaptcha precisará seguir manual devido a falta de assets para isso no momento.
 
 				//Clica em consultar nota.
-				ClickDonwloadXml(
+				Click(
 					id: _methodsInputs["Download_Xml"],
 					enumType: EnumTypeBy.ById);
 			}
@@ -96,19 +86,6 @@ namespace Test.Bot.Service.Impl
 				throw new BotException(ex.Message);
 			}
 
-		}
-
-		/// <summary>
-		/// Clicks the donwload XML.
-		/// </summary>
-		/// <param name="id">The identifier.</param>
-		/// <param name="enumType">Type of the enum.</param>
-		public void ClickDonwloadXml(string id, EnumTypeBy enumType)
-		{
-			SwitchToFrame(id, enumType);
-			ClickAndWait(
-					id: _methodsInputs["Download_Xml"],
-					enumType: EnumTypeBy.ById);
 		}
 
 	}
